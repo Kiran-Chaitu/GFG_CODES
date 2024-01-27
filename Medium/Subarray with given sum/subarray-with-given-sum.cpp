@@ -22,27 +22,17 @@ class Solution
         for(i=0;i<n;i++)
         {
             sum+=arr[i];
-            if(arr[i]==s)
-            {
-                v.push_back(i+1);
-                v.push_back(i+1);
-                return v;
+            if(arr[i]==s){
+                return {i+1,i+1};
             }
-            else if(sum==s)
-            {
-                v.push_back(j+1);
-                v.push_back(i+1);
-                return v;
+            else if(sum==s){
+                return {j+1,i+1};
             }
-            else if(sum>s)
-            {
-                while(sum>s)
-                {
+            else if(sum>s){
+                while(sum>s){
                     sum-=arr[j];
                     if(sum==s){
-                        v.push_back(j+2);
-                        v.push_back(i+1);
-                        return v;
+                        return {j+2,i+1};
                     }
                     j++;
                 }
@@ -51,6 +41,7 @@ class Solution
         return {-1};
     }
 };
+
 
 
 //{ Driver Code Starts.
