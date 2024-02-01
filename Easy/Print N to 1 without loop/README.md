@@ -1,4 +1,4 @@
-<h2><a href="https://www.geeksforgeeks.org/problems/print-n-to-1-without-loop/1?page=1&category=Arrays,Strings,Hash,Bit%20Magic,Stack,Searching,Recursion,Binary%20Search,two-pointer-algorithm,sliding-window,prefix-sum&difficulty=Basic,Easy&status=unsolved&sortBy=accuracy">Print N to 1 without loop</a></h2><h3>Difficulty Level : Easy</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Print numbers from <strong>N to 1</strong>&nbsp;(space separated) without the help of loops.</span></p>
+<h2><a href="https://www.geeksforgeeks.org/problems/print-n-to-1-without-loop/1?page=1&category=Sorting,Hash,Bit%20Magic,Linked%20List,Searching,Recursion,Binary%20Search,two-pointer-algorithm,sliding-window,prefix-sum&difficulty=Basic,Easy&status=solved&sortBy=accuracy">Print N to 1 without loop</a></h2><h3>Difficulty Level : Easy</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Print numbers from <strong>N to 1</strong>&nbsp;(space separated) without the help of loops.</span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
