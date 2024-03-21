@@ -14,17 +14,15 @@ class Solution{
         // Your code here
         long long cs=INT_MIN;
         long long ts=INT_MIN;
-        long long a[n];
+       
         for(int i=0;i<n;i++){
-            a[i]=arr[i];
-        }
-        for(int i=0;i<n;i++){
-            cs=max(cs+a[i],a[i]);
+            cs=max(cs+arr[i],(long long)arr[i]);
             ts=max(cs,ts);
         }
         return ts;
     }
 };
+
 
 
 //{ Driver Code Starts.
