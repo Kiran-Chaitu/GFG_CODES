@@ -21,18 +21,16 @@ class Solution{
             //cout<<v[i]<<" ";
             if(v[i]==k){
                 maxi=max(maxi,i+1);
-                if(mp.find(v[i]) == mp.end())   mp[v[i]]=i;
+                
             }
             else{
                 if(mp.find(v[i] - k) != mp.end()){
                     maxi = max(maxi , i - mp[v[i] - k]);
                     //cout<<maxi<<endl;
-                    if(mp.find(v[i]) == mp.end())   mp[v[i]]=i;
-                }
-                else{
-                    if(mp.find(v[i]) == mp.end())    mp[v[i]]=i;
+                    
                 }
             }
+            if(mp.find(v[i]) == mp.end())   mp[v[i]]=i;
             
             
         }
