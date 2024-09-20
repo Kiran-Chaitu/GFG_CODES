@@ -12,7 +12,11 @@ class Solution {
     // when order does not matter.
     long long countWays(int n) {
         // your code here
-        return ((n/2)+1);
+        vector<long long > dp(n+1,1);
+        for(long long i=2;i<=n;i++){
+            dp[i]+=dp[i-2];
+        }
+        return dp[n];
     }
 };
 
