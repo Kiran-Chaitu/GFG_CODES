@@ -1,9 +1,8 @@
 //{ Driver Code Starts
-//Initial template for C++
+// Initial template for C++
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-void rotate (vector<vector<int> >& matrix);
 
 
 // } Driver Code Ends
@@ -25,43 +24,42 @@ void rotate(vector<vector<int> >& matrix)
         //cout<<endl;
     }
     //cout<<endl;
-    for(int i=0;i<n/2;i++){
-        for(int j=0;j<n;j++){
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n/2;j++){
             int t = matrix[i][j];
-            matrix[i][j] = matrix[n-i-1][j];
-            matrix[n-1-i][j] = t;
+            matrix[i][j] = matrix[i][n-j-1];
+            matrix[i][n-j-1] = t;
         }
     }
 }
+
 
 
 //{ Driver Code Starts.
 
-int main()
-{
+int main() {
     int t;
-    cin>>t; 
-    while(t--)
-    {
+    cin >> t;
+    while (t--) {
         int n;
-        cin>>n; 
+        cin >> n;
         vector<vector<int> > matrix(n);
-        for(int i=0; i<n; i++)
-        {
+        for (int i = 0; i < n; i++) {
             matrix[i].resize(n);
-            for(int j=0; j<n; j++)
-                cin>>matrix[i][j]; 
+            for (int j = 0; j < n; j++)
+                cin >> matrix[i][j];
         }
         rotate(matrix);
-        for (int i = 0; i < n; ++i)
-        {
-            for(int j=0; j<n; j++)
-                cout<<matrix[i][j]<<" ";
-            cout<<"\n";
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < n; j++)
+                cout << matrix[i][j] << " ";
+            cout << "\n";
         }
+
+        cout << "~"
+             << "\n";
     }
     return 0;
 }
-
 
 // } Driver Code Ends
