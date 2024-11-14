@@ -1,18 +1,17 @@
 //{ Driver Code Starts
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 
 // } Driver Code Ends
-class Solution
-{
-    public:
-    //Function to return the sorted array.
-    vector <int> nearlySorted(int arr[], int num, int k){
-        // Your code here
+// User function Template for C++
+class Solution {
+  public:
+    void nearlySorted(vector<int>& arr, int k) {
+        // code
         priority_queue<int,vector<int> ,greater<int>> pq;
         vector<int> ans;
-        for(int i=0;i<num;i++){
+        for(int i=0;i<arr.size();i++){
             pq.push(arr[i]);
             if(pq.size()>k){
                 ans.push_back(pq.top());
@@ -23,35 +22,36 @@ class Solution
             ans.push_back(pq.top());
             pq.pop();
         }
-        return ans;
+        for(int i=0;i<arr.size();i++) arr[i] = ans[i];
     }
 };
 
 //{ Driver Code Starts.
 
-int main()
- {
-	int T;
-	cin>> T;
-	
-	while (T--)
-	{
-	    int num, K;
-	    cin>>num>>K;
-	    
-	    int arr[num];
-	    for(int i = 0; i<num; ++i){
-	        cin>>arr[i];
-	    }
-	    Solution ob;
-	    vector <int> res = ob.nearlySorted(arr, num, K);
-	    for (int i = 0; i < res.size (); i++)
-	        cout << res[i] << " ";
-	        
-	    cout<<endl;
-	}
-	
-	return 0;
+int main() {
+    string ts;
+    getline(cin, ts);
+    int t = stoi(ts);
+    while (t--) {
+        vector<int> arr;
+        string input;
+        getline(cin, input);
+        stringstream ss(input);
+        int number;
+        while (ss >> number) {
+            arr.push_back(number);
+        }
+        string ks;
+        getline(cin, ks);
+        int k = stoi(ks);
+        Solution obj;
+        obj.nearlySorted(arr, k);
+        for (int i = 0; i < arr.size(); i++) {
+            cout << arr[i] << " ";
+        }
+        cout << endl;
+        cout << "~" << endl;
+    }
+    return 0;
 }
-
 // } Driver Code Ends
