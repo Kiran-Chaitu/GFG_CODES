@@ -10,13 +10,21 @@ class Solution {
     vector<vector<int>> findTriplets(vector<int> &nums) {
         // Code here
         int n=nums.size();
+        unordered_map<int,vector<int>> mp;
         vector<vector<int>> v;
-        for(int i=0;i<n;i++){
+        for(int i=0;i<n-1;i++){
             for(int j=i+1;j<n;j++){
-                for(int k=j+1;k<n;k++){
-                    if(nums[i]+nums[j]+nums[k]==0) v.push_back({i,j,k});
+                if(mp[-(nums[i] + nums[j])].size() > 0){
+                    vector<int> temp;
+                    for(auto k:mp[-(nums[i] + nums[j])]){
+                        temp = {i,j};
+                        temp.push_back(k);
+                        sort(temp.begin(),temp.end());
+                        v.push_back(temp);
+                    }
                 }
             }   
+            mp[nums[i]].push_back(i);
         }
         return v;
     }
