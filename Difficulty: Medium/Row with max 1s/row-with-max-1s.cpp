@@ -7,17 +7,19 @@ using namespace std;
 // User function template for C++
 class Solution {
   public:
-    int rowWithMax1s(vector<vector<int> > &arr) {
+    int rowWithMax1s(vector<vector<int>> &arr) {
         // code here
-        int c=0,ans=-1;
-        for(int i=0;i<arr.size();i++){
-            int temp=0;
-            for(int j=0;j<arr[0].size();j++){
-                if(arr[i][j]==1) temp++;
-            }
-            if(temp>c){
-                c=temp;
-                ans=i;
+        int n=arr.size(),m=arr[0].size(),i=0,j=m-1,ans=-1,c=0,maxi=0;
+        while(i<n and j>=0){
+            if(arr[i][j]){
+                j--;
+                c++;
+                if(maxi < c){
+                    c=maxi;
+                    ans=i;
+                }
+            }else{
+                i++;
             }
         }
         return ans;
@@ -25,21 +27,53 @@ class Solution {
 };
 
 //{ Driver Code Starts.
+
 int main() {
     int t;
     cin >> t;
+    cin.ignore(); // Ignore the newline character after the integer input
     while (t--) {
-        int n, m;
-        cin >> n >> m;
-        vector<vector<int> > arr(n, vector<int>(m));
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                cin >> arr[i][j];
+        string input;
+        getline(cin, input);
+        vector<vector<int>> mat;
+        string innerArray;
+        bool isInsideArray = false;
+
+        for (char c : input) {
+            if (c == '[') {
+                if (isInsideArray) {
+                    innerArray.clear();
+                }
+                isInsideArray = true;
+            } else if (c == ']') {
+                if (isInsideArray && !innerArray.empty()) {
+                    vector<int> row;
+                    stringstream ss(innerArray);
+                    int num;
+
+                    while (ss >> num) {
+                        row.push_back(num);
+                        if (ss.peek() == ',')
+                            ss.ignore();
+                        while (isspace(ss.peek()))
+                            ss.ignore();
+                    }
+
+                    mat.push_back(row);
+                    innerArray.clear();
+                }
+                isInsideArray = false;
+            } else if (isInsideArray) {
+                if (!isspace(c)) {
+                    innerArray += c;
+                }
             }
         }
-        Solution ob;
-        auto ans = ob.rowWithMax1s(arr);
-        cout << ans << "\n";
+
+        Solution obj;
+        cout << obj.rowWithMax1s(mat);
+        cout << endl;
+        cout << "~" << endl;
     }
     return 0;
 }
