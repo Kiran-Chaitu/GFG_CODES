@@ -7,9 +7,9 @@ using namespace std;
 class Solution {
   public:
     // Function to return a list containing the DFS traversal of the graph.
-    void solver(vector<vector<int>> &adj,unordered_map<int,int> &mp , vector<int> &v , vector<int> &temp,int i){
+    void solver(vector<vector<int>> &adj,vector<int> &mp , vector<int> &v , vector<int> &temp,int i){
         if(i>= temp.size()) return;
-        if(mp.find(temp[i])== mp.end()){
+        if(!mp[temp[i]]){
             v.push_back(temp[i]);
             mp[temp[i]]=1;
             solver(adj , mp,v,adj[temp[i]] , 0);
@@ -19,10 +19,10 @@ class Solution {
     vector<int> dfsOfGraph(vector<vector<int>>& adj) {
         // Code here
         vector<int> v;
-        unordered_map<int,int> mp;
+        vector<int> vis(adj.size()); 
         v.push_back(0);
-        mp[0]=1;
-        solver(adj,mp,v,adj[0],0);
+        vis[0]=1;
+        solver(adj,vis,v,adj[0],0);
         return v;
     }
 };
