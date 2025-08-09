@@ -2,6 +2,14 @@ class Solution {
   public:
     void dfs(unordered_map< int , vector<int>> &edges  , stack<int> &st , vector<int> &vis , int val){
         vis[val] =1;
+        
+        
+        
+        
+        
+        
+        
+        
         for(auto it : edges[val]){
             if(!vis[it]) dfs(edges , st , vis , it);
         }
